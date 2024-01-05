@@ -1,0 +1,15 @@
+.my-center{
+  text-align: center;
+  display: flex;
+  margin: auto;
+  /* height: 50vh; */
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.container{
+  font-family: 'Quicksand', sans-serif;
+}
+body, html{
+  background-color: black;
+}

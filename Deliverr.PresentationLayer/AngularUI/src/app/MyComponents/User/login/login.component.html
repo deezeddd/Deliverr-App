@@ -1,0 +1,29 @@
+<body>
+  <div class="container" style="color: yellow;">
+    <h1>Login</h1>
+    <form [formGroup]="Login" (ngSubmit)="onLogin()">
+      <div class="form-group row">
+        <label for="email">Email</label>
+        <div class="col-sm-5">
+          <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your email"
+            required>
+          <div class="text-danger" *ngIf="isSubmitted && Login.get('email')!.invalid && Login.get('email')!.errors ">
+            Invalid Email.
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="password">Password</label>
+        <div class="col-sm-5">
+          <input formControlName="password" type="password" class="form-control" id="password"
+            placeholder="Enter your password" required>
+          <div class="text-danger"
+            *ngIf="isSubmitted && Login.get('password')!.invalid && Login.get('password')!.errors ">
+            Invalid Password.
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</body>

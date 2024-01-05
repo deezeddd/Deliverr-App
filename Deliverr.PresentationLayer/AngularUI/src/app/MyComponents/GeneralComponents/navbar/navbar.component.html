@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: black;">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" style="color: yellow;">Deliverr</a>
+    <button class="navbar-toggler" style="background-color: yellow;" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="products" routerLinkActive="active" style="color: yellow;">Products</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="help" routerLinkActive="" style="color: yellow;">Help</a>
+          </li> -->
+        </ul>
+        <ul class="navbar-nav mr-auto" *ngIf="this.isLoggedIn && !isAdmin">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="viewcart" routerLinkActive="active" style="color: yellow;">View Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="myorders" routerLinkActive="active" style="color: yellow;">My Orders</a>
+          </li>
+        </ul>
+        <!-- TODO -> routing +  only for admin -->
+        <ul class="navbar-nav mr-auto" *ngIf="this.isAdmin">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="addproduct" routerLinkActive="active" style="color: yellow;">Add
+              Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="productlist" routerLinkActive="active" style="color: yellow;">Product
+              List</a>
+          </li>
+        </ul>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a class="nav-link text-primary" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" routerLink="register">Register</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto"  *ngIf="isLoggedIn" >
+        <li class="nav-item">
+          <a class="nav-link text-primary hover-name">Welcome! {{this.Name }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger hover-signout" (click)="signOut()">
+            Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

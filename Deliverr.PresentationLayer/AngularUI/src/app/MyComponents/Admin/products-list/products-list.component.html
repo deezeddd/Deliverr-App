@@ -1,0 +1,66 @@
+<body>
+  <div class="container">
+    <h1>Products List</h1>
+
+    <div class="row" *ngIf="productsList.length != 0">
+      <div class="col-lg-6">
+        <div class="input-group mb-3">
+          <select class="custom-select" id="categorySelect">
+            <option selected>Sort by Category</option>
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="productName">
+          <div class="input-group-append">
+            <button class="btn btn-outline-success border-1 ml-1" type="button"
+              (click)="searchByTitle()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3" *ngIf="productsList.length != 0">
+      <div class="col-12 pagination justify-content-center" *ngIf="flag == 0 || productsList.length == 0">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+      </div>
+    </div>
+    <div *ngIf="flag == 1">{{this.errorMsg}}</div>
+    <div *ngIf="productsList.length === 0">No Product </div>
+    <div class="table-responsive"  *ngIf="productsList.length != 0" >
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let prod of productsList | paginate:{
+          itemsPerPage: tableSize,
+          currentPage : page,
+          totalItems: productsList.length}; let i = index">
+          <tr>
+            <td>{{this.prod.productName}}</td>
+            <td class="description">{{this.prod.description}}</td>
+            <td><img style="cursor: pointer;" (click)="navigateToDetails(prod.productId)" [src]=[prod.productImage]
+              [alt]="[prod.productName] +' Image'" class="img-thumbnail text-black"></td>
+            <td>{{this.prod.price | currency: 'INR'}}</td>
+            <td>
+              <button class="btn btn-outline-warning" type="button"
+                (click)="navigateToEdit(this.prod.productId)">Edit</button>
+              <button class="btn btn-outline-danger" type="button"
+                (click)="onDelete(this.prod.productId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>

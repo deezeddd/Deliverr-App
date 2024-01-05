@@ -1,0 +1,13 @@
+body{
+ font-family: 'Quicksand', sans-serif;
+
+}
+.hover-signout{
+  cursor: pointer;
+}
+.hover-name{
+  cursor :default;
+}
+.navbar-nav li.nav-item a.nav-link.active {
+  color: white !important;
+}

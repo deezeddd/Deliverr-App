@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="product-details">
+    <div class="left-section">
+      <!-- Product details on the left side -->
+      <img [src]="this.prod.productImage" alt="Product">
+      <h2>{{ this.prod.productName }}</h2>
+      <p class="description">{{ prod.description }}</p>
+      <p class="price" [ngClass]="prod.discount === 0 ? '' : 'text-decoration-line-through'">{{ prod.price | currency: 'INR' }}</p>
+      <p class="discount text-danger" *ngIf="prod.discount !== 0">{{ discountedPrice(prod.discount, prod.price) |
+        currency: 'INR' }}</p>
+      <div class="rating">
+        <h4>Rating</h4>
+        <div class=" m-lg-3 rating">
+          <ng-container *ngIf="rating === 0; else stars">
+            <p ml-1> (NA)</p>
+          </ng-container>
+          <ng-template #stars>
+            <ng-container *ngFor="let star of getStarsArray(rating)">
+              <p>★</p>
+            </ng-container>
+          </ng-template>
+        </div>
+      </div>
+      <div class="buttons" *ngIf="prod.availableQuantity != 0">
+        <button class="btn btn-outline-danger" (click)="decreaseQuantity(prod.productId)">-</button>
+        <span class="text-white m-3">{{getQuantity(prod.productId)}}</span>
+        <button class="btn btn-outline-success" (click)="increaseQuantity(prod.productId)">+</button>
+        <button class="btn btn-outline-warning ml-2"
+          (click)="toggleAddCart(prod.productId, getQuantity(prod.productId))">Add to Cart</button>
+      </div>
+      <div class="text-danger" *ngIf="prod.availableQuantity == 0">Out Of Stock</div>
+
+    </div>
+    <div class="right-section">
+      <div class="comments-section">
+        <div class="card">
+          <div class="p-3">
+            <h4>Reviews
+              <small>({{this.comments.length}})</small>
+            </h4>
+          </div>
+          <div class="mt-2 scrollable-comments">
+            <div class="d-flex flex-row p-3" *ngFor="let item of comments">
+              <div class="w-100">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex flex-row align-items-center">
+                    <span class="mr-2 h4">{{item.userName}}</span>
+                    <p> {{item.rating}} ★</p>
+                  </div>
+                  <small>
+                    <i class="fas fa-trash text-danger m-lg-2" *ngIf="this.userId == item.userId"
+                      (click)="deleteComment(item.id, item.userId)"></i>
+                    {{item.commentDate | date}}
+                  </small>
+                </div>
+                <p class="text-justify comment-text mb-0">{{item.comment}}</p>
+              </div>
+            </div>
+          </div>
+          <form [formGroup]="ratingForm" (ngSubmit)="onCommentSubmit()">
+            <div class="mt-3">
+              <div class="rating container">
+                <h5>Rating:</h5>
+                <div class="rating-buttons">
+                  <button class="btn btn-sm btn-outline-danger" type="button" (click)="decrementRating()">-</button>
+                  <span class="rating-value m-2">{{this.count}}</span>
+                  <button class="btn btn-sm btn-outline-success" type="button" (click)="incrementRating()">+</button>
+                </div>
+              </div>
+              <div class="ml-3">
+                <textarea type="textbox" class="form-control mt-2" placeholder="Enter your comment..."
+                  formControlName="comment"></textarea>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <button class="btn btn-primary" type="submit" (submit)="onCommentSubmit()">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

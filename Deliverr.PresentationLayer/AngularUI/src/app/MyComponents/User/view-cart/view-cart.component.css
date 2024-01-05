@@ -1,0 +1,46 @@
+body {
+  background-color: black;
+  color: yellow;
+  font-family: 'QuickSand', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: yellow;
+  padding: 15px;
+}
+
+.select-icon {
+  color: yellow;
+  margin-right: 20px;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.quantity {
+  margin-left: auto;
+}
+
+.quantity button {
+  margin: 0 5px;
+}
+
+/* Add this style to increase the gap between each card */
+.cart-item:not(:last-child) {
+  margin-bottom: 20px;
+}

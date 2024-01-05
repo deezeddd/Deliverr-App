@@ -1,0 +1,66 @@
+<body>
+  <div class="container" style="color: yellow;">
+    <h1>Register Yourself</h1>
+    <form [formGroup]="Register" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="name" class="col-form-label">Name</label>
+        <div class="col-sm-5">
+          <input type="text" formControlName="name" class="form-control col-xs-2 " id="name"
+            placeholder="Enter your name" required>
+          <div class="text-danger"
+            *ngIf="isSubmitted && Register.get('name')!.invalid && Register.get('name')!.errors ">
+            Please Enter Name.
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="email">Email</label>
+        <div class="col-sm-5">
+          <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter your email"
+            required>
+          <div class="text-danger"
+            *ngIf="isSubmitted && Register.get('email')!.invalid && Register.get('email')!.errors ">
+            Please Enter Valid Email.
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="phone">Phone Number</label>
+        <div class="col-sm-5">
+          <input type="tel" formControlName="phone" class="form-control" id="phone"
+            placeholder="Enter your phone number" required>
+          <div class="text-danger"
+            *ngIf="isSubmitted && Register.get('phone')!.invalid && Register.get('phone')!.errors ">
+            Please Enter Valid Phone Number.
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="password">Password</label>
+        <div class="col-sm-5">
+          <input type="password" formControlName="password" class="form-control" id="password"
+            placeholder="Enter your password" required>
+          <div class="text-danger"
+            *ngIf="isSubmitted && Register.get('password')!.invalid && Register.get('password')!.errors ">
+            Please Enter Valid Password.
+          </div>
+          <label for="password" class="text-info">Minimum length: 8 | At least 1 special character, 1 number, and 1 alphabet</label>
+
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="col-sm-5">
+          <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
+            placeholder="Confirm your password" required>
+        </div>
+        <div class="text-danger" *ngIf="Register.errors?.['match']">Doesn't Match</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+
+
+</body>

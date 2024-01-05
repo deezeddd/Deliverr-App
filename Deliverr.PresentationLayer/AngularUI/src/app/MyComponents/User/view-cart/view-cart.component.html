@@ -1,0 +1,53 @@
+<body>
+  <div class="container">
+    <h1>View Cart
+      <small>
+        ({{this.productsInCart.length}})
+      </small>
+      <small class="text-success ml-5">Total : {{this.sum}} </small>
+    </h1>
+    <div *ngIf="productsInCart.length != 0">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="productName">
+          <div class="input-group-append">
+            <button class="btn btn-outline-success border-1 ml-1" type="button"
+              (click)="searchByTitle()">Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 pagination justify-content-center" *ngIf="flag == 0 || productsInCart.length == 0">
+          <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="productsInCart.length == 0"> No Product in Cart</div>
+    <div *ngIf="flag === 1">{{this.errorMsg}}</div>
+
+    <div class="cart-item-container" *ngFor="let prod of productsInCart | paginate:{
+      itemsPerPage: tableSize,
+      currentPage : page,
+      totalItems: productsInCart.length}; let i = index">
+      <div class="cart-item" *ngIf="flag === 0">
+        <img style="cursor: pointer;" (click)="navigateToDetails(prod.productId)" [src]=[prod.productImage]
+          [alt]="[prod.productName] +' Image'">
+        <div>
+          <h3>{{ prod.productName }}</h3>
+          <p class="price" [ngClass]="prod.discount === 0 ? '' : 'text-decoration-line-through'">{{ prod.price | currency: 'INR' }}</p>
+          <p class="discount text-danger" *ngIf="prod.discount !== 0">{{ discountedPrice(prod.discount, prod.price) |
+            currency: 'INR' }}</p>
+        </div>
+        <div class="quantity ">
+          <button class="btn btn-danger m-2 " (click)="decreaseQuantity(prod.productId)">-</button>
+          <span class="m-2">{{ getQuantity(prod.productId) }}</span>
+          <button class="btn btn-success btn-outline m-2" (click)="increaseQuantity(prod.productId)">+</button>
+          <button class="btn btn-danger" (click)="removeFromCart(prod.productId)">Remove</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3 mb-3" *ngIf=" flag === 0 && productsInCart.length != 0"
+      (click)="placeOrder(productsInCart)">Place Order</button>
+  </div>
+</body>

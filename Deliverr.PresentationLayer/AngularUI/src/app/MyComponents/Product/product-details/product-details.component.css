@@ -1,0 +1,134 @@
+
+.container {
+  background-color: black;
+  color: yellow;
+  padding: 20px;
+  font-family: 'Quicksand', sans-serif;
+
+}
+
+.product-details {
+  display: flex;
+}
+img{
+  width: 150px;
+}
+.left-section {
+  flex: 1;
+}
+
+.right-section {
+  flex: 1;
+}
+
+
+textarea {
+  width: 100%;
+}
+
+/* Add additional CSS styles as needed */
+.comment-section {
+  background-color: rgb(12, 12, 9);
+  color: black;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.comment p {
+  margin: 0;
+}
+
+.comment-rating {
+  margin-top: 5px;
+}
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.rating-buttons button {
+  margin: 0 5px;
+}
+
+.card{
+	background-color: #fff;
+	border: none;
+}
+.form-control{
+	height: 48px;
+	border-radius: 7px;
+}
+
+
+
+.fas{
+  cursor: pointer;
+  color: aquamarine;
+}
+
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section {
+  width: 60%;
+  padding: 20px;
+}
+
+.left-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right-section {
+  width: 40%;
+  padding: 20px;
+}
+
+.card {
+  background-color: black;
+  color: yellow;
+}
+
+.card h4 {
+  margin: 0;
+}
+
+.form-color {
+  background-color: rgb(0, 0, 0);
+  color: yellow;
+}
+
+.comment-text {
+  margin-top: 5px;
+	font-size: 15px;
+
+}
+
+.scrollable-comments  {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+
+::-webkit-scrollbar {
+  width: 2px;
+  background: rgb(0, 0, 0);
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: yellow;
+  border-radius: 100px;
+  height: 2px;
+}

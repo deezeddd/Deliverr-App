@@ -1,0 +1,75 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group mb-3">
+          <div class="dropdown">
+            <button class="btn btn-primary select-category" type="button" id="categoryDropdown" (click)="toggleDropdown()">
+              Select Category
+            </button>
+            <div class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }" aria-labelledby="categoryDropdown">
+             <a class="dropdown-item" href="/products">All</a>
+              <a class="dropdown-item" (click)="getSelectedCategory('Fruits'); displayCategory()" >Fruits </a>
+              <a class="dropdown-item" (click)="getSelectedCategory('Vegetables'); displayCategory()" >Vegetables</a>
+              <a class="dropdown-item" (click)="getSelectedCategory('Beverages'); displayCategory()"  >Beverages</a>
+              <a class="dropdown-item" (click)="getSelectedCategory('Spreads'); displayCategory()" >Spreads</a>
+              <a class="dropdown-item" (click)="getSelectedCategory('Biscuits'); displayCategory()">Biscuits</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="productName">
+          <div class="input-group-append">
+            <button class="btn btn-outline-success border-1 ml-1" type="button"
+              (click)="searchByTitle()">Search</button>
+              <button class="btn btn-outline-primary border-1 ml-1" type="button" (click)="sortBy()">
+                Sort By {{ sortOrder === 'asc' ? 'Low to High' : 'High to Low' }}
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3" *ngIf="productsList.length != 0">
+      <div class="col-12 pagination justify-content-center" *ngIf="flag === 0 || productsList.length == 0">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+      </div>
+    </div>
+
+    <div *ngIf="flag === 1">{{this.errorMsg}}</div>
+    <div class="row mt-3">
+      <div class="col-md-4 mb-3" *ngFor="let prod of productsList | paginate:{
+      itemsPerPage: tableSize,
+      currentPage : page,
+      totalItems: productsList.length}; let i = index">
+        <div class="product" *ngIf="flag === 0">
+          <div>
+            <img style="cursor: pointer;" [routerLink]="[prod.productId]" [src]="prod.productImage" alt="Product">
+          </div>
+          <div class="content">
+            <h3 class="title">{{ prod.productName }}</h3>
+            <p class="description">{{ prod.description }}</p>
+          </div>
+          <div class="price-container">
+            <p class="price" [ngClass]="prod.discount === 0 ? '' : 'text-decoration-line-through'">{{ prod.price | currency: 'INR' }}</p>
+            <p class="discount text-danger" *ngIf="prod.discount !== 0">{{ discountedPrice(prod.discount, prod.price) |
+              currency: 'INR' }}</p>
+          </div>
+          <div class="icons">
+            <div class="quantity" *ngIf="prod.availableQuantity != 0">
+              <button class="btn btn text-danger btn-outline" (click)="decreaseQuantity(prod.productId)">-</button>
+              <span class="m-2">{{getQuantity(prod.productId)}}</span>
+              <button class="btn btn text-success btn-outline" (click)="increaseQuantity(prod.productId)">+</button>
+              <button class="btn" (click)="toggleAddCart(prod.productId, getQuantity(prod.productId))">
+                <i [ngClass]="'fas fa-shopping-cart'" style="color: yellow"></i>
+              </button>
+            </div>
+            <div class="text-danger" *ngIf="prod.availableQuantity == 0">Out Of Stock</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

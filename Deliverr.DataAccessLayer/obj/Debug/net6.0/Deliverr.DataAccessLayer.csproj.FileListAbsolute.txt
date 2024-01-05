@@ -1,0 +1,12 @@
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\Deliverr.DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\Deliverr.DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\Deliverr.DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\Deliverr.DataAccessLayer.AssemblyInfo.cs
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\Deliverr.DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\bin\Debug\net6.0\Deliverr.DataAccessLayer.deps.json
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\bin\Debug\net6.0\Deliverr.DataAccessLayer.dll
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\bin\Debug\net6.0\Deliverr.DataAccessLayer.pdb
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\Deliverr.DataAccessLayer.dll
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\refint\Deliverr.DataAccessLayer.dll
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\Deliverr.DataAccessLayer.pdb
+C:\Users\vedantmaurya\vedant-maurya\ExitTest\Deliverr.DataAccessLayer\obj\Debug\net6.0\ref\Deliverr.DataAccessLayer.dll
