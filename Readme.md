@@ -3,12 +3,12 @@
 1. Update the server name with your server name("Server=" here) in the connection string present in the appsettings.json file in the Grocery store
 
  "ConnectionStrings": {
-    "SqlServerConnectionStr": "Data Source=IN-PG03521Y ;Initial Catalog = DeliverrDb ;Integrated Security=true;"
+    "SqlServerConnectionStr": "Data Source= ;Initial Catalog = DeliverrDb ;Integrated Security=true;"
   }
 
 # Credentials 
 
-2. Admin credentials, Admin will be created on it's own when the project will be run for the first time.
+2. Admin credentials, Admin will be created on its own when the project will be run for the first time.
 
 Email                      Password
 
